@@ -34,7 +34,16 @@ public class PlayerController : MonoBehaviour
     {
         if(collision.gameObject.name == "Enemy") {
             transform.localScale += new Vector3(xScale, yScale, 0);
-            Destroy(collision.gameObject);
+            //Debug.Log("Player: " + xScale + ", Enemy: " + collision.gameObject.transform.localScale.x);
+            if (xScale > collision.gameObject.transform.localScale.x)
+            {
+                Destroy(collision.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+            Debug.Log(collision.gameObject.transform.localScale.x);
         }
     }public void getxScale(){
     
