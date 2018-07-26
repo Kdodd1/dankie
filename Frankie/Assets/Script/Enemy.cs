@@ -11,7 +11,9 @@ public class Enemy : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-   
+        xScale = Random.Range(.1f, 3.0f);
+        yScale = xScale;
+        transform.localScale = new Vector3(xScale, yScale);
 		
 	}
 	

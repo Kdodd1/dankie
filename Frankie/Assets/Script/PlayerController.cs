@@ -32,10 +32,11 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "Enemy") {
-            transform.localScale += new Vector3(xScale, yScale, 0);
-            //Debug.Log("Player: " + xScale + ", Enemy: " + collision.gameObject.transform.localScale.x);
-            if (xScale > collision.gameObject.transform.localScale.x)
+        if(collision.gameObject.name == "Enemy" || collision.gameObject.name == "Enemy(Clone)") {
+            //transform.localScale += new Vector3(xScale, yScale, 0);
+            transform.localScale += new Vector3(.1f, .1f);
+            //Debug.Log("Player: " + transform.localScale.x + ", Enemy: " + collision.gameObject.transform.localScale.x);
+            if (transform.localScale.x > collision.gameObject.transform.localScale.x)
             {
                 Destroy(collision.gameObject);
             }
@@ -45,8 +46,5 @@ public class PlayerController : MonoBehaviour
             }
             Debug.Log(collision.gameObject.transform.localScale.x);
         }
-    }public void getxScale(){
-    
-
     }
 }
