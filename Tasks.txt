@@ -1,0 +1,17 @@
+To Do:
+-Create menus
+-Refine enemy spawns (FROM outside camera, with animation through screen)
+-Enemy destruction (after leaving camera)
+-SPRITES!
+-Movement animation
+-Collision detection on enemies (so they can eat each other)
+-LATER-Environmental hazards (tornadoes, dust storms, etc.)
+-LATER-Make map larger than camera view
+-LATER-Have player always at center of screen
+-MUCH LATER-Multiplayer
+
+Done:
+-Main character movement
+-Create GameController class to control events
+-Create enemy prefab
+-Create enemy spawning mechanism
