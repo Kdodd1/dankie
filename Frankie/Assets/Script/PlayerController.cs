@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         rb.MovePosition(rb.position + moveVelocity * Time.fixedDeltaTime);
         
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.name == "Enemy" || collision.gameObject.name == "Enemy(Clone)") {
             //Debug.Log("Player: " + transform.localScale.x + ", Enemy: " + collision.gameObject.transform.localScale.x);
