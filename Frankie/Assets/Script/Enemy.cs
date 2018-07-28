@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour {
 	}
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "Enemy"|| collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.name == "Player")
         {
             //if bigger than what you collided with, increase size
             if (transform.localScale.x > collision.gameObject.transform.localScale.x)
