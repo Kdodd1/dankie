@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
+    [SerializeField] public float xMin, xMax, yMin, yMax;
     int count = 0;
-    float x, y;
     public GameObject enemy;
     public int spawnTimer;
 
@@ -25,16 +25,13 @@ public class GameController : MonoBehaviour {
 
         if (count > spawnTimer)
         {
-            generateEnemy();
+            createEnemy();
             count = 0;
         }
     }
 
-    void generateEnemy()
+    void createEnemy()
     {
-        x = Random.Range(-6.6f, 6.6f);
-        y = Random.Range(-5f, 5f);
-        //Debug.Log("Generate enemy at:" + x + ", " + y);
-        Instantiate(enemy, new Vector3(x, y), Quaternion.identity);
+        Instantiate(enemy);
     }
 }
