@@ -1,16 +1,18 @@
 To Do:
 -Create menus
--Refine enemy spawns (FROM outside camera, with animation through screen)
+-Fix enemy collision box scaling issue (it scales faster than the sprite)
 -Enemy destruction (after leaving camera)
 -SPRITES!
 -Movement animation
 -Collision detection on enemies (so they can eat each other)
+-Add sounds
 -LATER-Environmental hazards (tornadoes, dust storms, etc.)
 -LATER-Make map larger than camera view
 -LATER-Have player always at center of screen
 -MUCH LATER-Multiplayer
 
 Done:
+-Enemy spawns outside of screenview and moves across screen
 -Main character movement
 -Create GameController class to control events
 -Create enemy prefab
