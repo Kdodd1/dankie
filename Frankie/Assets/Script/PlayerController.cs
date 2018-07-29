@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float xScale;
     public float yScale;
+    public float xMin;
+    public float xMax;
+    public float yMin;
+    public float yMax;
 
 
     private Rigidbody2D rb;
@@ -27,6 +31,7 @@ public class PlayerController : MonoBehaviour
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput.normalized * speed;
         playerWin();
+        playerClamps();
 
 
 
@@ -67,8 +72,17 @@ public class PlayerController : MonoBehaviour
     
           SceneManager.LoadScene(3);
         }
+     
 
+    }
+    void playerClamps(){
+        Vector3 clampedPositionX = transform.position;
+        clampedPositionX.x = Mathf.Clamp(transform.position.x, xMin, xMax);
+        transform.position = clampedPositionX;
 
+        Vector3 clampedPositionY = transform.position;
+        clampedPositionY.y = Mathf.Clamp(transform.position.y, yMin, yMax);
+        transform.position = clampedPositionY;
     }
 }
     
