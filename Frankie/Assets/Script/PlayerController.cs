@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float xScale;
     public float yScale;
-  
+
 
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
@@ -23,10 +23,11 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-        
+
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput.normalized * speed;
-        
+        playerWin();
+
 
 
 
@@ -57,17 +58,20 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    /*void playerWin()
-     * {
+    void playerWin()
+    {
 
-        
-        if (transform.localScale.x >= GameObject.Find("WinSize").transform.localScale.x){
-            SceneManager.LoadScene(3);
-        } 
-   
+        Debug.Log("Player" + (transform.localScale.magnitude + "win" + (GameObject.Find("WinSize").transform.localScale.magnitude + 1)));
+       if (transform.localScale.magnitude >= (GameObject.Find("WinSize").transform.localScale.magnitude + 1))
+        {
+    
+          SceneManager.LoadScene(3);
+        }
 
-        }*/
+
     }
+}
+    
 
     
 
