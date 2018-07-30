@@ -3,14 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
-    [SerializeField] public float xMin, xMax, yMin, yMax;
     int count = 0;
     public GameObject enemy;
+    public GameObject initEnemy;
     public int spawnTimer;
 
 	// Use this for initialization
 	void Start () {
-		
+		for (int i = 1; i < 50; i++)
+        {
+            createInitEnemy();
+        }
 	}
 	
 	// Update is called once per frame
@@ -33,5 +36,9 @@ public class GameController : MonoBehaviour {
     void createEnemy()
     {
         Instantiate(enemy);
+    }
+    void createInitEnemy()
+    {
+        Instantiate(initEnemy);
     }
 }

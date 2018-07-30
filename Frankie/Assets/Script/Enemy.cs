@@ -6,17 +6,18 @@ public class Enemy : MonoBehaviour {
     public float speed;
     float xScale, yScale, xPos, yPos, xVector, yVector;
     //variables for starting positions, just off screen
-    float xMax = 7;
-    float yMax = 5.3f;
+    float xMax = 152f;
+    float yMax = 152f;
     //determine max 'speed' of movement
-    float xMaxSpeed = .01f;
-    float yMaxSpeed = .01f;
+    float maxSpeed = .01f;
+    float minSpeed = .00001f;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start() {
         SetRandomScale();
         SetRandomPosition();
         transform.position = new Vector3(xPos, yPos);
+        Debug.Log("Created at: " + xPos + " + " + yPos);
     }
 	
 	// Update is called once per frame
@@ -65,6 +66,7 @@ public class Enemy : MonoBehaviour {
         xScale = Random.Range(.1f, 3.0f);
         yScale = xScale;
         transform.localScale = new Vector3(xScale, yScale);
+        //transform.localScale = new Vector3(50, 50);
     }
 
     //create and set random start position
@@ -93,33 +95,33 @@ public class Enemy : MonoBehaviour {
 
     void SetTop()
     {
-        xPos = Random.Range(-6.6f, 6.6f);
+        xPos = Random.Range(-xMax, xMax);
         yPos = yMax;
-        xVector = Random.Range(-xMaxSpeed, xMaxSpeed);
-        yVector = Random.Range(-yMaxSpeed, -.000001f);
+        xVector = Random.Range(-maxSpeed, maxSpeed);
+        yVector = Random.Range(-maxSpeed, -minSpeed);
     }
 
     void SetBottom()
     {
-        xPos = Random.Range(-6.6f, 6.6f);
+        xPos = Random.Range(-xMax, xMax);
         yPos = -yMax;
-        xVector = Random.Range(-xMaxSpeed, xMaxSpeed);
-        yVector = Random.Range(.000001f, yMaxSpeed);
+        xVector = Random.Range(-maxSpeed, maxSpeed);
+        yVector = Random.Range(minSpeed, maxSpeed);
     }
     
     void SetRight()
     {
         xPos = xMax;
-        yPos = Random.Range(-5f, 5f);
-        xVector = Random.Range(-xMaxSpeed, -.000001f);
-        yVector = Random.Range(-yMaxSpeed, yMaxSpeed);
+        yPos = Random.Range(-yMax, yMax);
+        xVector = Random.Range(-maxSpeed, -minSpeed);
+        yVector = Random.Range(-maxSpeed, maxSpeed);
     }
 
     void SetLeft()
     {
         xPos = -xMax;
-        yPos = Random.Range(-5f, 5f);
-        xVector = Random.Range(.000001f, xMaxSpeed);
-        yVector = Random.Range(-yMaxSpeed, yMaxSpeed);
+        yPos = Random.Range(-yMax, yMax);
+        xVector = Random.Range(minSpeed, maxSpeed);
+        yVector = Random.Range(-maxSpeed, maxSpeed);
     }
 }
