@@ -8,12 +8,8 @@ public class PlayerController : MonoBehaviour
     public float speed;
     public float xScale;
     public float yScale;
-    public float xMin;
-    public float xMax;
-    public float yMin;
-    public float yMax;
-
-
+    public float edgeDist; //Distance from (0,0) to edge of map for clamps
+    
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
 
@@ -55,6 +51,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
+                //Destroy the player and load lose screen
                 Destroy(gameObject);
                 SceneManager.LoadScene(2);
             }
@@ -77,11 +74,11 @@ public class PlayerController : MonoBehaviour
     }
     void playerClamps(){
         Vector3 clampedPositionX = transform.position;
-        clampedPositionX.x = Mathf.Clamp(transform.position.x, xMin, xMax);
+        clampedPositionX.x = Mathf.Clamp(transform.position.x, -edgeDist, edgeDist);
         transform.position = clampedPositionX;
 
         Vector3 clampedPositionY = transform.position;
-        clampedPositionY.y = Mathf.Clamp(transform.position.y, yMin, yMax);
+        clampedPositionY.y = Mathf.Clamp(transform.position.y, -edgeDist, edgeDist);
         transform.position = clampedPositionY;
     }
 }
