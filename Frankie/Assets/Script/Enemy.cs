@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour {
     float xMax = 75f;
     float yMax = 75f;
     //determine max 'speed' of movement
-    float maxSpeed = .5f;
-    float minSpeed = .00001f;
+    float maxSpeed = .10f;
+    float minSpeed = .0000001f;
 
     // Use this for initialization
     void Start() {
