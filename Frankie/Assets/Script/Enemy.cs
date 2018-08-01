@@ -41,6 +41,12 @@ public class Enemy : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+
+        else if (collision.gameObject.name == "Wall")
+        {
+            xVector = -xVector;
+            yVector = -yVector;
+        }
     }
     /*private void OnCollisionEnter2D(Collision2D collision)
     {

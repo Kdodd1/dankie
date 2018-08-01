@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        transform.localScale += new Vector3(3f, 3f);
 
     }
     private void Update()
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
     void playerWin()
     {
-       if (transform.localScale.magnitude >= (GameObject.Find("WinSize").transform.localScale.magnitude + 1))
+       if (transform.localScale.magnitude >= (GameObject.Find("WinSize").transform.localScale.magnitude + 100))
         {
     
           SceneManager.LoadScene(3);
