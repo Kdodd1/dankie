@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-
     }
     private void Update()
     {
@@ -43,7 +42,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Enemy(Clone)")
         {
-            //Debug.Log("Player: " + transform.localScale.x + ", Enemy: " + collision.gameObject.transform.localScale.x);
             if (transform.localScale.x > collision.gameObject.transform.localScale.x)
             {
                 //transform.localScale += new Vector3(xScale, yScale, 0);
@@ -55,15 +53,12 @@ public class PlayerController : MonoBehaviour
                 Destroy(gameObject);
                 SceneManager.LoadScene(2);
             }
-            Debug.Log(collision.gameObject.transform.localScale.x);
         }
 
     }
 
     void playerWin()
     {
-
-        Debug.Log("Player" + (transform.localScale.magnitude + "win" + (GameObject.Find("WinSize").transform.localScale.magnitude + 1)));
        if (transform.localScale.magnitude >= (GameObject.Find("WinSize").transform.localScale.magnitude + 1))
         {
     

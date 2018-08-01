@@ -6,30 +6,24 @@ public class GameController : MonoBehaviour {
     int count = 0;
     public GameObject enemy;
     public GameObject initEnemy;
-    public int spawnTimer;
+    public int spawnTimer; //controls how fast (in fps) enemies spawn
+    public int maxEnemies; //most amount of enemies that can be onscreen
+    public static int enemiesOnScreen; //count of enemies on screen
 
-	// Use this for initialization
-	void Start () {
-		for (int i = 1; i < 50; i++)
-        {
-            createInitEnemy();
-        }
+    // Use this for initialization
+    void Start () {
+        enemiesOnScreen = 0;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        timer();
-	}
-
-    // Keep track of time and call actions
-    void timer()
-    {
         count++;
 
-        if (count > spawnTimer)
+        if (count > spawnTimer && enemiesOnScreen < maxEnemies)
         {
             createEnemy();
             count = 0;
+            Debug.Log(enemiesOnScreen + " live enemies");
         }
     }
 

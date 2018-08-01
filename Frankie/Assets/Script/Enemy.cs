@@ -6,10 +6,10 @@ public class Enemy : MonoBehaviour {
     public float speed;
     float xScale, yScale, xPos, yPos, xVector, yVector;
     //variables for starting positions, just off screen
-    float xMax = 152f;
-    float yMax = 152f;
+    float xMax = 75f;
+    float yMax = 75f;
     //determine max 'speed' of movement
-    float maxSpeed = .01f;
+    float maxSpeed = .5f;
     float minSpeed = .00001f;
 
     // Use this for initialization
@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour {
         SetRandomScale();
         SetRandomPosition();
         transform.position = new Vector3(xPos, yPos);
-        Debug.Log("Created at: " + xPos + " + " + yPos);
+        GameController.enemiesOnScreen++; //register new enemy w/ GameController
     }
 	
 	// Update is called once per frame
@@ -37,9 +37,9 @@ public class Enemy : MonoBehaviour {
             //if smaller than what you collided with, destroy
             else
             {
+                GameController.enemiesOnScreen--; //de-register enemy w/ GameController
                 Destroy(gameObject);
             }
-            Debug.Log(collision.gameObject.transform.localScale.x);
         }
     }
     /*private void OnCollisionEnter2D(Collision2D collision)
