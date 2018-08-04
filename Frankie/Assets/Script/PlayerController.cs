@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        transform.localScale += new Vector3(3f, 3f);
 
     }
     private void Update()
