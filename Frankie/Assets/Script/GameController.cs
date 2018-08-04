@@ -5,16 +5,14 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
     int count = 0;
     public GameObject enemy;
-    public int spawnTimer; //controls how fast (in fps) enemies spawn
-    public int maxEnemies; //most amount of enemies that can be onscreen
-    public static int enemiesOnScreen; //count of enemies on screen
+    public int spawnTimer; 
+    public int maxEnemies; 
+    public static int enemiesOnScreen; 
 
-    // Use this for initialization
     void Start () {
         enemiesOnScreen = 0;
 	}
 	
-	// Update is called once per frame
 	void Update () {
         count++;
 
@@ -22,7 +20,6 @@ public class GameController : MonoBehaviour {
         {
             createEnemy();
             count = 0;
-            Debug.Log(enemiesOnScreen + " live enemies");
         }
     }
 

@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     public float speed;
-    float xScale, yScale, xPos, yPos, xVector, yVector;
+    float scale, xPos, yPos, xVector, yVector;
     //variables for starting positions, just off screen
     float xMax = 75f;
     float yMax = 75f;
     //determine max 'speed' of movement
     float maxSpeed = .10f;
     float minSpeed = .0000001f;
+    float colliderScale = .1f;
 
-    // Use this for initialization
     void Start() {
         SetRandomScale();
         SetRandomPosition();
@@ -20,19 +20,19 @@ public class Enemy : MonoBehaviour {
         GameController.enemiesOnScreen++; //register new enemy w/ GameController
     }
 	
-	// Update is called once per frame
 	void Update () {
         transform.position += new Vector3(xVector, yVector);
 	}
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Enemy"|| collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.name == "Player")
+        if (collision.gameObject.tag == "Enemy"|| collision.gameObject.tag == "Player")
         {
             //if bigger than what you collided with, increase size
             if (transform.localScale.x > collision.gameObject.transform.localScale.x)
             {
-                //transform.localScale += new Vector3(xScale, yScale, 0);
-                transform.localScale += new Vector3(.1f, .1f);
+
+                transform.localScale += new Vector3(colliderScale, colliderScale);
             }
             //if smaller than what you collided with, destroy
             else
@@ -48,31 +48,12 @@ public class Enemy : MonoBehaviour {
             yVector = -yVector;
         }
     }
-    /*private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.name == "Enemy" || collision.gameObject.name == "Enemy(Clone)" || collision.gameObject.name == "Player")
-        {
-            //if bigger than what you collided with, increase size
-            if (transform.localScale.x > collision.gameObject.transform.localScale.x)
-            {
-                //transform.localScale += new Vector3(xScale, yScale, 0);
-                transform.localScale += new Vector3(.1f, .1f);
-            }
-            //if smaller than what you collided with, destroy
-            else
-            {
-                Destroy(gameObject);
-            }
-            Debug.Log(collision.gameObject.transform.localScale.x);
-        }
-    }*/
+
     //create and set random start size
     void SetRandomScale()
     {
-        xScale = Random.Range(.1f, 3.0f);
-        yScale = xScale;
-        transform.localScale = new Vector3(xScale, yScale);
-        //transform.localScale = new Vector3(50, 50);
+        scale = Random.Range(.1f, 3.0f);
+        transform.localScale = new Vector3(scale, scale);
     }
 
     //create and set random start position
