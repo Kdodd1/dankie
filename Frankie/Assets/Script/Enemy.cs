@@ -46,8 +46,20 @@ public class Enemy : MonoBehaviour {
 
         else if (collision.gameObject.name == "Wall")
         {
-            xVector = -xVector;
-            yVector = -yVector;
+            if (xVector < 0)
+            {
+                xVector = Random.Range(minSpeed, maxSpeed);
+            }
+            else
+            {
+                xVector = Random.Range(-maxSpeed, -minSpeed);
+            }
+            if (yVector < 0) {
+                yVector = Random.Range(minSpeed, maxSpeed);
+            }
+            else {
+                yVector = Random.Range(-maxSpeed, -minSpeed);
+            }
         }
         else if (collision.gameObject.tag == "Vegetation")
         {
@@ -118,4 +130,5 @@ public class Enemy : MonoBehaviour {
         xVector = Random.Range(minSpeed, maxSpeed);
         yVector = Random.Range(-maxSpeed, maxSpeed);
     }
+
 }
