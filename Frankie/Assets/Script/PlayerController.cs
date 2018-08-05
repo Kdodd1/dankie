@@ -47,6 +47,11 @@ public class PlayerController : MonoBehaviour
                 SceneManager.LoadScene(2);
             }
         }
+        else if(collision.gameObject.tag == "Vegetation")
+        {
+            Vector3 growthRate = new Vector3(collision.gameObject.transform.localScale.x * .05f, collision.gameObject.transform.localScale.y * .05f);
+            transform.localScale += growthRate;
+        }
     }
 
     void playerClamps(){
