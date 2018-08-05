@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,11 +13,14 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveVelocity;
     private float size;
     public CameraController cam;
+    public Text scoreText;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         size = transform.localScale.x;
+        scoreText.text = transform.localScale.x.ToString();
+
     }
 
     private void Update()
@@ -45,6 +49,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(gameObject);
                 SceneManager.LoadScene(2);
             }
+      
         }
         else if(collision.gameObject.tag == "Vegetation")
         {
@@ -52,6 +57,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale += growthRate;
         }
         checkSize();
+        scoreText.text = transform.localScale.x.ToString();
     }
 
     void playerClamps(){
@@ -73,6 +79,7 @@ public class PlayerController : MonoBehaviour
             cam.zoomOut();
         }
     }
+
 }
     
 
