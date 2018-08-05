@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour
             {
 
                 transform.localScale += new Vector3(scale, scale);
-                checkSize();
             }
             else
             {
@@ -52,6 +51,7 @@ public class PlayerController : MonoBehaviour
             Vector3 growthRate = new Vector3(collision.gameObject.transform.localScale.x * .05f, collision.gameObject.transform.localScale.y * .05f);
             transform.localScale += growthRate;
         }
+        checkSize();
     }
 
     void playerClamps(){
