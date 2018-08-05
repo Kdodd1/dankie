@@ -32,7 +32,9 @@ public class Enemy : MonoBehaviour {
             if (transform.localScale.x > collision.gameObject.transform.localScale.x)
             {
 
-                transform.localScale += new Vector3(colliderScale, colliderScale);
+                Vector3 growthRate = new Vector3(collision.gameObject.transform.localScale.x * .1f, collision.gameObject.transform.localScale.y * .1f);
+                transform.localScale += growthRate;
+
             }
             //if smaller than what you collided with, destroy
             else
