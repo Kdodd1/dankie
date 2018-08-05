@@ -10,10 +10,13 @@ public class PlayerController : MonoBehaviour
     public float edgeDist;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
+    private float size;
+    public CameraController cam;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        size = transform.localScale.x;
     }
 
     private void Update()
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour
             {
 
                 transform.localScale += new Vector3(scale, scale);
+                checkSize();
             }
             else
             {
@@ -53,6 +57,16 @@ public class PlayerController : MonoBehaviour
         Vector3 clampedPositionY = transform.position;
         clampedPositionY.y = Mathf.Clamp(transform.position.y, -edgeDist, edgeDist);
         transform.position = clampedPositionY;
+    }
+
+    void checkSize()
+    {
+        if (transform.localScale.x > size + .5f)
+        {
+            Debug.Log("Zoom OUT!!!");
+            size = transform.localScale.x;
+            cam.zoomOut();
+        }
     }
 }
     
