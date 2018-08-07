@@ -28,7 +28,6 @@ public class GameController : MonoBehaviour {
             createEnemy();
             count = 0;
         }
-
         count2++;
 
         if(count2 > vegTimer && vegOnScreen < maxVeg){

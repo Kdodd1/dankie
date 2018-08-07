@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
     void checkSize()
     {
-        if (transform.localScale.x > size + .5f)
+        if (transform.localScale.x > size + 2f)
         {
             Debug.Log("Zoom OUT!!!");
             size = transform.localScale.x;
