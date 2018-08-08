@@ -7,11 +7,11 @@ public class Vegetation : MonoBehaviour {
     float yPos;
     float edgeDis = 74f;
     float count = 0f;
-    float swayRate = 0f;
-    float maxSway = 90;
+    float swayAngle;
+    float maxSway = 70f;
     int swayCount = 0;
     float sign = 1f;
-    float rotator = .5f;
+    float rotator = .3f;
     public int growthRate = 15;
     
 
@@ -51,13 +51,13 @@ public class Vegetation : MonoBehaviour {
 
     void randomSway()
     {
-        swayRate = Random.Range(-maxSway, maxSway);
+        swayAngle = Random.Range(10, maxSway);
     }
 
     void sway()
     {
         swayCount++;
-        if (swayCount < maxSway)
+        if (swayCount > swayAngle)
         {
             sign *= -1f;
             rotator *= sign;
@@ -71,6 +71,6 @@ public class Vegetation : MonoBehaviour {
 
     void grow()
     {
-        transform.localScale += new Vector3(.2f, .2f);
+        transform.localScale += new Vector3(.1f, .1f);
     }
 }
