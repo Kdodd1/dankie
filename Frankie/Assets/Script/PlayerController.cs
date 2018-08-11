@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    float speedDecay = .3f;
     public float scale = .1f;
     public float edgeDist;
     private Rigidbody2D rb;
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         size = transform.localScale.x;
         scoreText.text = transform.localScale.x.ToString();
+        speed = 5f;
 
     }
 
@@ -74,8 +76,8 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.localScale.x > size + 2f)
         {
-            Debug.Log("Zoom OUT!!!");
             size = transform.localScale.x;
+            speed -= speedDecay;
             cam.zoomOut();
         }
     }
