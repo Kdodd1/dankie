@@ -59,10 +59,12 @@ public class Enemy : MonoBehaviour {
             if (xVector < 0)
             {
                 xVector = Random.Range(minSpeed, maxSpeed);
+                animator.SetInteger("Direction", 0);
             }
             else
             {
                 xVector = Random.Range(-maxSpeed, -minSpeed);
+                animator.SetInteger("Direction", 1);
             }
             if (yVector < 0) {
                 yVector = Random.Range(minSpeed, maxSpeed);
@@ -70,6 +72,7 @@ public class Enemy : MonoBehaviour {
             else {
                 yVector = Random.Range(-maxSpeed, -minSpeed);
             }
+            
         }
         else if (collision.gameObject.tag == "Vegetation")
         {
