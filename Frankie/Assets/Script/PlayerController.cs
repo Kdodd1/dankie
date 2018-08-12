@@ -99,19 +99,20 @@ public class PlayerController : MonoBehaviour
     void AnimationHandler()
     {
 
-            if (Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
             {
                 RegisterMove(0);
             }
-            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
             {
                 RegisterMove(1);
             }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
             {
                 RegisterMove(2);
             }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
+
             {
                 RegisterMove(3);
             }
@@ -121,19 +122,19 @@ public class PlayerController : MonoBehaviour
     //Checks if the player stopped pressing the direction key
     void CheckDirStop()
     {
-        if (Input.GetKeyUp(KeyCode.UpArrow) && currentDir == 0)
+        if ((Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.W)) && currentDir == 0)
         {
             RegisterStop();
         }
-        else if (Input.GetKeyUp(KeyCode.RightArrow) && currentDir == 1)
+        else if ((Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.D)) && currentDir == 1)
         {
             RegisterStop();
         }
-        else if (Input.GetKeyUp(KeyCode.DownArrow) && currentDir == 2)
+        else if ((Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S)) && currentDir == 2)
         {
             RegisterStop();
         }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow) && currentDir == 3)
+        else if ((Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.A)) && currentDir == 3)
         {
             RegisterStop();
         }
