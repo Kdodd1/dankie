@@ -12,15 +12,25 @@ public class Enemy : MonoBehaviour {
     float maxSpeed = .10f;
     float minSpeed = .0000001f;
     float colliderScale = .1f;
+    Animator animator;
 
     void Start() {
+        animator = GetComponent<Animator>();
+        animator.SetInteger("Direction", 0);
         SetRandomScale();
         SetRandomPosition();
+        if (xVector < 0)
+        {
+            animator.SetInteger("Direction", 1);
+        }
+        else animator.SetInteger("Direction", 0);
         transform.position = new Vector3(xPos, yPos);
+      
         GameController.enemiesOnScreen++; //register new enemy w/ GameController
     }
 	
 	void Update () {
+
         transform.position += new Vector3(xVector, yVector);
 	}
 
