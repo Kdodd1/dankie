@@ -15,6 +15,12 @@ public class PlayerController : MonoBehaviour
     private float size;
     public CameraController cam;
     public Text scoreText;
+    int currentDir = 1; //tracks current player move-direction
+    bool twoDirs = false; //tracks whether moving in two directions (x and y)
+    int secondDir = 0; //tracks secondary direction
+    bool keepDir = false;
+    Animator animator;
+    float animationSpeed = .8f;
 
     void Start()
     {
@@ -22,10 +28,18 @@ public class PlayerController : MonoBehaviour
         size = transform.localScale.x;
         scoreText.text = transform.localScale.x.ToString();
         speed = 5f;
-
+        animator = GetComponent<Animator>();
+        animator.SetInteger("Direction", currentDir);
+        animator.speed = 0f;
     }
 
     private void Update()
+    {
+        AnimationHandler();
+        MovePlayer();
+    }
+
+    private void MovePlayer()
     {
         Vector2 moveInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput.normalized * speed;
@@ -82,13 +96,80 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void AnimationHandler()
+    {
+
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                RegisterMove(0);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                RegisterMove(1);
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                RegisterMove(2);
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                RegisterMove(3);
+            }
+        CheckDirStop();
+    }
+
+    //Checks if the player stopped pressing the direction key
+    void CheckDirStop()
+    {
+        if (Input.GetKeyUp(KeyCode.UpArrow) && currentDir == 0)
+        {
+            RegisterStop();
+        }
+        else if (Input.GetKeyUp(KeyCode.RightArrow) && currentDir == 1)
+        {
+            RegisterStop();
+        }
+        else if (Input.GetKeyUp(KeyCode.DownArrow) && currentDir == 2)
+        {
+            RegisterStop();
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) && currentDir == 3)
+        {
+            RegisterStop();
+        }
+    }
+
+    //Decides how to handle stop
+    void RegisterStop()
+    {
+        if (twoDirs)
+        {
+            keepDir = false;
+            twoDirs = false;
+            RegisterMove(secondDir);
+        }
+        else
+        {
+            animator.speed = 0f;
+            keepDir = false;
+        }
+    }
+    
+    //Decides how to handle the move
+    void RegisterMove(int dir)
+    {
+        //Changes direction if needed
+        if (!keepDir)
+        {
+            animator.SetInteger("Direction", dir);
+            animator.speed = animationSpeed;
+            currentDir = dir;
+            keepDir = true;
+        }
+        //Register second direction
+        else if(!twoDirs){
+            secondDir = dir;
+            twoDirs = true;
+        }
+    }
 }
-    
-
-    
-
-
- 
-   
-
-
