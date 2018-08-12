@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     bool keepDir = false;
     Animator animator;
     float animationSpeed = .8f;
-
+    [SerializeField] AudioClip munchSound;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
         {
             if (transform.localScale.x > collision.gameObject.transform.localScale.x)
             {
-
+                AudioSource.PlayClipAtPoint(munchSound, transform.position);
                 transform.localScale += new Vector3(scale, scale);
             }
             else
@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Vegetation")
         {
+            AudioSource.PlayClipAtPoint(munchSound, transform.position);
             Vector3 growthRate = new Vector3(collision.gameObject.transform.localScale.x * .05f, collision.gameObject.transform.localScale.y * .05f);
             transform.localScale += growthRate;
         }
