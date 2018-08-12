@@ -330,9 +330,10 @@ MonoBehaviour:
   enemy: {fileID: 1282792530039350, guid: f221be58fa698d241b7ec736737b0369, type: 2}
   vegetation: {fileID: 1809983120389314, guid: 042cf44f96fb2bc4c9634056962e8fa5, type: 2}
   spawnTimer: 1
-  maxEnemies: 10
+  maxEnemies: 500
   vegTimer: 1
-  maxVeg: 0
+  maxVeg: 500
+  edgeDistance: 30
 --- !u!4 &759438254
 Transform:
   m_ObjectHideFlags: 0
@@ -707,6 +708,16 @@ Prefab:
       propertyPath: edgeDist
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 114062967922682718, guid: 937f1937723150f489f38ce22296d0a0,
+        type: 2}
+      propertyPath: munchSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d2c92113aa6f6884a85b380c68edc91f, type: 3}
+    - target: {fileID: 114062967922682718, guid: 937f1937723150f489f38ce22296d0a0,
+        type: 2}
+      propertyPath: squishSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 787848888b26a184091f2a06c711afa7, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 937f1937723150f489f38ce22296d0a0, type: 2}
   m_IsPrefabParent: 0

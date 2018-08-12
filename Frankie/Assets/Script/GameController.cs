@@ -13,7 +13,8 @@ public class GameController : MonoBehaviour {
     public int vegTimer;
     public int maxVeg;
     public static int vegOnScreen;
-   
+    public static float edgeDist = 30f;
+
 
     void Start () {
         enemiesOnScreen = 0;
@@ -46,5 +47,14 @@ public class GameController : MonoBehaviour {
     {
         Instantiate(vegetation);
     }
+
+    public float GetEdgeDist()
+    {
+        Debug.Log("In GC: " + edgeDist);
+        return edgeDist;
+    }
+
 }
+
+
     

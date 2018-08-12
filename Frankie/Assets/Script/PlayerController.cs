@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed;
     float speedDecay = .3f;
     public float scale = .1f;
-    public float edgeDist;
+    float edgeDist;
     private Rigidbody2D rb;
     private Vector2 moveVelocity;
     private float size;
@@ -21,9 +21,13 @@ public class PlayerController : MonoBehaviour
     bool keepDir = false;
     Animator animator;
     float animationSpeed = .8f;
+    
+
     [SerializeField] AudioClip munchSound;
+    [SerializeField] AudioClip squishSound;
     void Start()
     {
+        edgeDist = GameController.edgeDist;
         rb = GetComponent<Rigidbody2D>();
         size = transform.localScale.x;
         scoreText.text = transform.localScale.x.ToString();
@@ -62,8 +66,9 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                Destroy(gameObject);
-                SceneManager.LoadScene(2);
+                AudioSource.PlayClipAtPoint(squishSound, transform.position);
+                //Destroy(gameObject);
+                Invoke("LoadNextScene", .5f);
             }
       
         }
@@ -77,6 +82,10 @@ public class PlayerController : MonoBehaviour
         scoreText.text = transform.localScale.x.ToString();
     }
 
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene(2);
+    }
     void playerClamps(){
         Vector3 clampedPositionX = transform.position;
         clampedPositionX.x = Mathf.Clamp(transform.position.x, -edgeDist, edgeDist);
