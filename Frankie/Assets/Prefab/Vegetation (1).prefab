@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212413326319560814}
   - component: {fileID: 50954919099622228}
   - component: {fileID: 114112100678243040}
-  - component: {fileID: 60608028592405470}
+  - component: {fileID: 58870126484935456}
   m_Layer: 0
   m_Name: Vegetation (1)
   m_TagString: Vegetation
@@ -36,13 +36,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1809983120389314}
-  m_LocalRotation: {x: -0.011819747, y: 0.00004147327, z: -0.999924, w: 0.0035085452}
-  m_LocalPosition: {x: -0.22270514, y: 0.24184024, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 1.3540001, z: -179.598}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50954919099622228
 Rigidbody2D:
   serializedVersion: 4
@@ -63,8 +63,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!60 &60608028592405470
-PolygonCollider2D:
+--- !u!58 &58870126484935456
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -76,60 +76,8 @@ PolygonCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.26727274, y: 0.2709091}
-    newSize: {x: 0.26727274, y: 0.2709091}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.017272728, y: -0.06272727}
-      - {x: 0.048181817, y: -0.07363636}
-      - {x: 0.11, y: -0.09181818}
-      - {x: 0.10818182, y: -0.11545455}
-      - {x: 0.11909091, y: -0.11909091}
-      - {x: 0.13363637, y: -0.10454545}
-      - {x: 0.13363637, y: -0.035454545}
-      - {x: 0.11, y: -0.0063636363}
-      - {x: 0.088181816, y: 0.0009090909}
-      - {x: 0.06454545, y: 0.0063636363}
-      - {x: 0.10454545, y: 0.024545455}
-      - {x: 0.12636364, y: 0.07545455}
-      - {x: 0.122727275, y: 0.08090909}
-      - {x: 0.10272727, y: 0.09}
-      - {x: 0.084545456, y: 0.095454544}
-      - {x: 0.06636364, y: 0.095454544}
-      - {x: 0.060909092, y: 0.093636364}
-      - {x: 0.05181818, y: 0.09}
-      - {x: 0.040909093, y: 0.07909091}
-      - {x: 0.03, y: 0.05727273}
-      - {x: 0.013636364, y: 0.09}
-      - {x: 0.0027272727, y: 0.10818182}
-      - {x: -0.03181818, y: 0.13363637}
-      - {x: -0.03909091, y: 0.13545455}
-      - {x: -0.09909091, y: 0.13545455}
-      - {x: -0.09181818, y: 0.122727275}
-      - {x: -0.08090909, y: 0.11545455}
-      - {x: -0.046363637, y: 0.040909093}
-      - {x: -0.07363636, y: 0.042727273}
-      - {x: -0.10636364, y: 0.03909091}
-      - {x: -0.13363637, y: 0.015454546}
-      - {x: -0.13363637, y: -0.013636364}
-      - {x: -0.12636364, y: -0.024545455}
-      - {x: -0.086363636, y: -0.02818182}
-      - {x: -0.05727273, y: -0.020909091}
-      - {x: -0.07727273, y: -0.05909091}
-      - {x: -0.07, y: -0.10454545}
-      - {x: -0.060909092, y: -0.11727273}
-      - {x: -0.033636365, y: -0.13545455}
-      - {x: 0.011818182, y: -0.13545455}
-      - {x: 0.017272728, y: -0.13363637}
-      - {x: 0.020909091, y: -0.12636364}
-      - {x: -0.011818182, y: -0.093636364}
+  serializedVersion: 2
+  m_Radius: 0.13545457
 --- !u!114 &114112100678243040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,7 +89,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281c50d1ec1a11046ab218712993f79e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growthRate: 15
 --- !u!212 &212413326319560814
 SpriteRenderer:
   m_ObjectHideFlags: 1
