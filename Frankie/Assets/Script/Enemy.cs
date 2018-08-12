@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour {
     public float speed;
     float scale, xPos, yPos, xVector, yVector;
     //variables for starting positions, just off screen
-    float xMax = 75f;
-    float yMax = 75f;
+    float xMax = 31f;
+    float yMax = 31f;
     //determine max 'speed' of movement
     float maxSpeed = .10f;
     float minSpeed = .0000001f;
@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour {
             }
         }
 
-        else if (collision.gameObject.name == "Wall")
+        else if (collision.gameObject.tag == "Wall")
         {
             if (xVector < 0)
             {

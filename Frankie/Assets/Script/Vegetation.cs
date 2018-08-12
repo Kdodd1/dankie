@@ -5,7 +5,7 @@ using UnityEngine;
 public class Vegetation : MonoBehaviour {
     float xPos;
     float yPos;
-    float edgeDis = 74f;
+    float edgeDis = 30f;
     float count = 0f;
     float swayAngle;
     float minSway = 10f;
