@@ -6,17 +6,18 @@ public class Enemy : MonoBehaviour {
     public float speed;
     float scale, xPos, yPos, xVector, yVector;
     //variables for starting positions, just off screen
-    float xMax = 31f;
-    float yMax = 31f;
+    float outside;
     //determine max 'speed' of movement
     float maxSpeed = .10f;
     float minSpeed = .0000001f;
     float colliderScale = .1f;
     Animator animator;
 
-    void Start() {
+    void Start()
+    {
         animator = GetComponent<Animator>();
         animator.SetInteger("Direction", 0);
+        outside = GameController.edgeDist + 1f;
         SetRandomScale();
         SetRandomPosition();
         if (xVector < 0)
@@ -25,9 +26,9 @@ public class Enemy : MonoBehaviour {
         }
         else animator.SetInteger("Direction", 0);
         transform.position = new Vector3(xPos, yPos);
-      
         GameController.enemiesOnScreen++; //register new enemy w/ GameController
-    }
+
+    }    
 	
 	void Update () {
 
@@ -114,32 +115,32 @@ public class Enemy : MonoBehaviour {
 
     void SetTop()
     {
-        xPos = Random.Range(-xMax, xMax);
-        yPos = yMax;
+        xPos = Random.Range(-outside, outside);
+        yPos = outside;
         xVector = Random.Range(-maxSpeed, maxSpeed);
         yVector = Random.Range(-maxSpeed, -minSpeed);
     }
 
     void SetBottom()
     {
-        xPos = Random.Range(-xMax, xMax);
-        yPos = -yMax;
+        xPos = Random.Range(-outside, outside);
+        yPos = -outside;
         xVector = Random.Range(-maxSpeed, maxSpeed);
         yVector = Random.Range(minSpeed, maxSpeed);
     }
     
     void SetRight()
     {
-        xPos = xMax;
-        yPos = Random.Range(-yMax, yMax);
+        xPos = outside;
+        yPos = Random.Range(-outside, outside);
         xVector = Random.Range(-maxSpeed, -minSpeed);
         yVector = Random.Range(-maxSpeed, maxSpeed);
     }
 
     void SetLeft()
     {
-        xPos = -xMax;
-        yPos = Random.Range(-yMax, yMax);
+        xPos = -outside;
+        yPos = Random.Range(-outside, outside);
         xVector = Random.Range(minSpeed, maxSpeed);
         yVector = Random.Range(-maxSpeed, maxSpeed);
     }

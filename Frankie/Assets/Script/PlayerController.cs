@@ -21,10 +21,10 @@ public class PlayerController : MonoBehaviour
     bool keepDir = false;
     Animator animator;
     float animationSpeed = .8f;
-    
-
     [SerializeField] AudioClip munchSound;
     [SerializeField] AudioClip squishSound;
+    public GameObject parasite;
+
     void Start()
     {
         edgeDist = GameController.edgeDist;
@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.SetInteger("Direction", currentDir);
         animator.speed = 0f;
+       // spawnParasite();
     }
 
     private void Update()
@@ -183,4 +184,10 @@ public class PlayerController : MonoBehaviour
             twoDirs = true;
         }
     }
+
+  /*  void spawnParasite()
+    {
+        GameObject para = Instantiate(parasite, gameObject.transform.position, Quaternion.identity) as GameObject;
+        para.transform.parent = gameObject.transform;
+    }*/
 }

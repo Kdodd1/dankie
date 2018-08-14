@@ -5,16 +5,20 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
     public float edgeDist;
     public PlayerController player;
-
+    float leftBound, rightBound;
 	// Use this for initialization
 	void Start () {
-
+        SetClamps();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         cameraClamps();
 	}
+
+    void SetClamps()
+    {
+    }
 
     void cameraClamps()
     {

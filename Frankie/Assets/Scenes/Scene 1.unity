@@ -333,7 +333,6 @@ MonoBehaviour:
   maxEnemies: 500
   vegTimer: 1
   maxVeg: 500
-  edgeDistance: 30
 --- !u!4 &759438254
 Transform:
   m_ObjectHideFlags: 0
@@ -718,7 +717,14 @@ Prefab:
       propertyPath: squishSound
       value: 
       objectReference: {fileID: 8300000, guid: 787848888b26a184091f2a06c711afa7, type: 3}
-    m_RemovedComponents: []
+    - target: {fileID: 114062967922682718, guid: 937f1937723150f489f38ce22296d0a0,
+        type: 2}
+      propertyPath: parasite
+      value: 
+      objectReference: {fileID: 1862261674752232, guid: c8934e8383c60cd4b96ffcc8937346b5,
+        type: 2}
+    m_RemovedComponents:
+    - {fileID: 60490944044319808, guid: 937f1937723150f489f38ce22296d0a0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 937f1937723150f489f38ce22296d0a0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1696162790
@@ -873,3 +879,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bff00447ff8b5ec4abc7bf99223f841f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2125145813 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1820970146388126, guid: 937f1937723150f489f38ce22296d0a0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1482091868}
+--- !u!58 &2125145815
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2125145813}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.11265
