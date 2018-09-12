@@ -725,6 +725,7 @@ Prefab:
         type: 2}
     m_RemovedComponents:
     - {fileID: 60490944044319808, guid: 937f1937723150f489f38ce22296d0a0, type: 2}
+    - {fileID: 114062967922682718, guid: 937f1937723150f489f38ce22296d0a0, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 937f1937723150f489f38ce22296d0a0, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1696162790
@@ -879,11 +880,37 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bff00447ff8b5ec4abc7bf99223f841f, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &2076324859 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114151258416256336, guid: 937f1937723150f489f38ce22296d0a0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1482091868}
+  m_Script: {fileID: 11500000, guid: 4930e4e1db109764a8eab6fa6b4f6ff2, type: 3}
 --- !u!1 &2125145813 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1820970146388126, guid: 937f1937723150f489f38ce22296d0a0,
     type: 2}
   m_PrefabInternal: {fileID: 1482091868}
+--- !u!114 &2125145814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2125145813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c10f696f085727c4786af815120aa062, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseSpeed: 0
+  baseSize: 0
+  isEdible: 0
+  xDir: 0
+  yDir: 0
+  xMove: 0
+  yMove: 0
+  isMoving: 0
+  cam: {fileID: 2076324859}
 --- !u!58 &2125145815
 CircleCollider2D:
   m_ObjectHideFlags: 0

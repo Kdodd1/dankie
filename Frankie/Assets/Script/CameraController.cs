@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
     public float edgeDist;
-    public PlayerController player;
+    public Player player;
     float leftBound, rightBound;
 	// Use this for initialization
 	void Start () {
