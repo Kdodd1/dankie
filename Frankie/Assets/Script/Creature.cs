@@ -14,20 +14,12 @@ public class Creature : MonoBehaviour {
 
     // Use this for initialization
     public virtual void Start () {
-        xDir = 0f;
-        yDir = 1f;
-        baseSpeed = 5;
-        isMoving = true;
 	}
 	
 	// Update is called once per frame
 	public virtual void Update () {
-
-		if (isMoving)
-        {
-            UpdateProperties();
-            HandleMove();
-        }
+        UpdateProperties();
+        HandleMove();
 	}
 
     // Handles movement of character, per frame

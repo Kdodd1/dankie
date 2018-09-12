@@ -10,6 +10,7 @@ public class Player : Creature {
         //initialize starting values
         isMovingX = false;
         isMovingY = false;
+        baseSpeed = 5;
 
     }
 
@@ -17,12 +18,6 @@ public class Player : Creature {
     public override void Update() {
         HandleInput();
         base.Update();
-    }
-
-    // Handles movement of character, per frame
-    public override void HandleMove()
-    {
-        transform.position += new Vector3((xMove * Time.deltaTime), (yMove * Time.deltaTime));
     }
 
     // Handles player input
