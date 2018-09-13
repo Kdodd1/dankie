@@ -25,13 +25,13 @@ public class Creature : MonoBehaviour {
     // Handles movement of character, per frame
     public virtual void HandleMove()
     {
-        transform.position += new Vector3((xMove * Time.deltaTime), (yMove * Time.deltaTime));
+        transform.position = new Vector3(xMove, yMove);
     }
 
     //update properties before animating frame
     public virtual void UpdateProperties()
     {
-        xMove = xDir * baseSpeed;
-        yMove = yDir * baseSpeed;
+        xMove = transform.position.x + (xDir * baseSpeed) * Time.deltaTime;
+        yMove = transform.position.y + (yDir * baseSpeed) * Time.deltaTime;
     }
 }

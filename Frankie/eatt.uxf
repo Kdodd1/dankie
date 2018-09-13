@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>280</x>
+      <y>48</y>
+      <w>168</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Creature&gt;&gt;
+--
++baseSpeed: float
+#baseSize: float
++isEdible: bool
+#xDir: float
+#yDir: float
+#xMove: float
+#yMove: float
+#isMoving: bool
+--
+/+Start()/
+/+Update()/
+/+UpdateProperties()/
++move()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>456</x>
+      <y>280</y>
+      <w>152</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>Player
+--
++cam: CameraController
+-isMovingX: bool
+-isMovingY: bool
+--
+-HandleInput()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>216</y>
+      <w>176</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>72</x>
+      <y>280</y>
+      <w>152</w>
+      <h>88</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;Enemy&gt;&gt;
+--
+-
+-isMovingX: bool
+-isMovingY: bool
+--
+-HandleInput()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

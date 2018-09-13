@@ -2,20 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : Creature {
+public class Player : Creature
+{
     public CameraController cam;
     bool isMovingX, isMovingY; //So you can only move in one direction at once on each axis
+    float edgeDist;
+
     // Use this for initialization
-    void Start() {
+    void Start()
+    {
         //initialize starting values
         isMovingX = false;
         isMovingY = false;
         baseSpeed = 5;
+        edgeDist = GameController.edgeDist;
 
     }
 
     // Update is called once per frame
-    public override void Update() {
+    public override void Update()
+    {
         HandleInput();
         base.Update();
     }
@@ -38,7 +44,6 @@ public class Player : Creature {
         }
 
         //check for movement along x axis, only if not already moving along x axis
-        Debug.Log("isMovingX = " + isMovingX.ToString());
         if (!isMovingX)
         {
             //If right arrow is pressed, start moving right
@@ -49,7 +54,7 @@ public class Player : Creature {
                 //set so we can only move along x axis in one direction at a time
                 isMovingX = true;
             }
-            
+
             //if left arrow is pressed, start moving left
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
@@ -85,8 +90,7 @@ public class Player : Creature {
     //finalizes values for next frame update
     public override void UpdateProperties()
     {
-        xMove = xDir * baseSpeed;
-        yMove = yDir * baseSpeed;
-      //  Debug.Log("UpdatePropertiesPlayer, xMove=" + xMove + ", yMove=" + yMove);
+        xMove = Mathf.Clamp((transform.position.x + (xDir * baseSpeed) * Time.deltaTime), -edgeDist, edgeDist);
+        yMove = Mathf.Clamp((transform.position.y + (yDir * baseSpeed) * Time.deltaTime), -edgeDist, edgeDist);
     }
 }
