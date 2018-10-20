@@ -9,8 +9,9 @@ public class Player : Creature
     float edgeDist;
 
     // Use this for initialization
-    void Start()
-    {
+    public override void Start()
+    {   
+        base.Start(); //call Start() from Creature
         //initialize starting values
         isMovingX = false;
         isMovingY = false;
@@ -34,6 +35,7 @@ public class Player : Creature
         {
             xDir = 0f;
             isMovingX = false;
+            xChanged = true;
         }
 
         //check for stopped movement along y axis
@@ -41,6 +43,7 @@ public class Player : Creature
         {
             yDir = 0f;
             isMovingY = false;
+            yChanged = true;
         }
 
         //check for movement along x axis, only if not already moving along x axis
@@ -49,10 +52,10 @@ public class Player : Creature
             //If right arrow is pressed, start moving right
             if (Input.GetKey(KeyCode.RightArrow))
             {
-                Debug.Log("Right hit");
                 xDir = 1f;
                 //set so we can only move along x axis in one direction at a time
                 isMovingX = true;
+                xChanged = true;
             }
 
             //if left arrow is pressed, start moving left
@@ -61,6 +64,7 @@ public class Player : Creature
                 xDir = -1f;
                 //set so we can only move along x axis in one direction at a time
                 isMovingX = true;
+                xChanged = true;
             }
         }
 
@@ -74,6 +78,7 @@ public class Player : Creature
 
                 //set so we can only move along y axis in one direction at a time
                 isMovingY = true;
+                yChanged = true;
             }
 
             //if down arrow is pressed, start moving up
@@ -83,7 +88,63 @@ public class Player : Creature
 
                 //set so we can only move along y axis in one direction at a time
                 isMovingY = true;
+                yChanged = true;
             }
+        }
+        if (xChanged || yChanged) {
+            HandleAnimation();
+        }
+
+        //reset checks for next frame;
+        xChanged = false;
+        yChanged = false;
+        
+    }
+
+    public override void HandleAnimation() {
+        if (!isMovingX && !isMovingY) {
+            animator.speed = 0f;
+        }
+        else {
+            animator.speed = animationSpeed;
+            if (xChanged) {
+                if (xDir > 0) {
+                    animator.SetInteger("Direction", 1);
+                }
+                else if (xDir < 0) {
+                    animator.SetInteger("Direction", 3);
+                }
+                else {
+                    Fallthrough();
+                }
+            }
+            if (yChanged) {
+                if (yDir > 0) {
+                    animator.SetInteger("Direction", 0);
+                }
+                else if (yDir < 0) {
+                    animator.SetInteger("Direction", 2);
+                }
+                else {
+                    Fallthrough();
+                }
+            }
+        }
+    }
+
+    //adjusts animation if not caught by direction change 
+    void Fallthrough() {
+        if (yDir > 0) {
+            animator.SetInteger("Direction", 0);
+        }
+        else if (yDir < 0) {
+            animator.SetInteger("Direction", 2);
+        }
+        else if (xDir > 0) {
+            animator.SetInteger("Direction", 1);
+        }
+        else {
+            animator.SetInteger("Direction", 3);
         }
     }
 

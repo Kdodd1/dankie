@@ -11,9 +11,13 @@ public class Creature : MonoBehaviour {
     protected float xDir, yDir; //movement direction
     protected float xMove, yMove; //movement velocity
     public bool isMoving; //is creature moving
-
+    protected Animator animator; //controls animation
+    protected float animationSpeed = 0.8f; //speed of animation (fps)
+    protected bool xChanged = true; //specifies if xDir changed
+    protected bool yChanged = true; //specified if yDir has chagned
     // Use this for initialization
     public virtual void Start () {
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -28,6 +32,12 @@ public class Creature : MonoBehaviour {
         transform.position = new Vector3(xMove, yMove);
     }
 
+    // Handles animation of character, per frame
+    public virtual void HandleAnimation()
+    {
+
+    }
+    
     //update properties before animating frame
     public virtual void UpdateProperties()
     {
