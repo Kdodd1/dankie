@@ -15,9 +15,13 @@ public class Creature : MonoBehaviour {
     protected float animationSpeed = 0.8f; //speed of animation (fps)
     protected bool xChanged = true; //specifies if xDir changed
     protected bool yChanged = true; //specified if yDir has chagned
+    protected Rigidbody2D rb; 
+    protected float scale = 1f; //amount player scales by
+
     // Use this for initialization
     public virtual void Start () {
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -25,6 +29,52 @@ public class Creature : MonoBehaviour {
         UpdateProperties();
         HandleMove();
 	}
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Creature")
+        {
+            if (transform.localScale.x > collision.gameObject.transform.localScale.x)
+            {
+               HandleEating();
+            }
+            else
+            {
+               HandleDying(); 
+            }
+      
+        }   
+        //Delete this next else if when Enemy is converted over to Creature subclass.
+        else if (collision.gameObject.tag == "Enemy")
+        {
+            if (transform.localScale.x > collision.gameObject.transform.localScale.x)
+            {
+               HandleEating();
+            }
+            else
+            {
+               HandleDying(); 
+            }
+      
+        }
+        else if(collision.gameObject.tag == "Vegetation")
+        {
+            HandleEating();
+            Debug.Log("Eating veg");
+            Vector3 growthRate = new Vector3(collision.gameObject.transform.localScale.x * .05f, collision.gameObject.transform.localScale.y * .05f);
+            transform.localScale += growthRate;
+        }
+    }
+
+    //Handle eating something
+    public virtual void HandleEating() {
+
+    }
+
+    //Handle getting eaten by something
+    public virtual void HandleDying() {
+
+    }
 
     // Handles movement of character, per frame
     public virtual void HandleMove()

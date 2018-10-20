@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : Creature
 {
     public CameraController cam;
     bool isMovingX, isMovingY; //So you can only move in one direction at once on each axis
     float edgeDist;
+    public AudioClip munchSound;
+    public AudioClip squishSound;
 
     // Use this for initialization
     public override void Start()
@@ -27,6 +30,21 @@ public class Player : Creature
         base.Update();
     }
 
+    public override void HandleEating() {
+        AudioSource.PlayClipAtPoint(munchSound, transform.position);
+        transform.localScale += new Vector3(scale, scale);
+    }
+
+    public override void HandleDying() {
+        AudioSource.PlayClipAtPoint(squishSound, transform.position);
+        Destroy(gameObject);
+        Invoke("LoadNextScene", 1f);
+    }
+
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene(2);
+    }
     // Handles player input
     void HandleInput()
     {
@@ -115,7 +133,7 @@ public class Player : Creature
                     animator.SetInteger("Direction", 3);
                 }
                 else {
-                    Fallthrough();
+                    FallThrough();
                 }
             }
             if (yChanged) {
@@ -126,14 +144,14 @@ public class Player : Creature
                     animator.SetInteger("Direction", 2);
                 }
                 else {
-                    Fallthrough();
+                    FallThrough();
                 }
             }
         }
     }
 
     //adjusts animation if not caught by direction change 
-    void Fallthrough() {
+    void FallThrough() {
         if (yDir > 0) {
             animator.SetInteger("Direction", 0);
         }
