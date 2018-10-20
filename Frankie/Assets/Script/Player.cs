@@ -10,6 +10,7 @@ public class Player : Creature
     float edgeDist;
     public AudioClip munchSound;
     public AudioClip squishSound;
+    private float size;
 
     // Use this for initialization
     public override void Start()
@@ -20,6 +21,7 @@ public class Player : Creature
         isMovingY = false;
         baseSpeed = 5;
         edgeDist = GameController.edgeDist;
+        size = transform.localScale.x;
 
     }
 
@@ -33,12 +35,24 @@ public class Player : Creature
     public override void HandleEating() {
         AudioSource.PlayClipAtPoint(munchSound, transform.position);
         transform.localScale += new Vector3(scale, scale);
+        checkSize();
     }
 
     public override void HandleDying() {
         AudioSource.PlayClipAtPoint(squishSound, transform.position);
-        Destroy(gameObject);
+        //Destroy(gameObject);
         Invoke("LoadNextScene", 1f);
+    }
+
+    //see if character size has grown enough to zoom camera out
+    void checkSize()
+    {
+        if (transform.localScale.x > size + 2f)
+        {
+            size = transform.localScale.x;
+            baseSpeed -= speedDecay;
+            cam.zoomOut();
+        }
     }
 
     void LoadNextScene()

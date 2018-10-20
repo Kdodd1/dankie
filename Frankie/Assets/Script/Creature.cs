@@ -17,6 +17,7 @@ public class Creature : MonoBehaviour {
     protected bool yChanged = true; //specified if yDir has chagned
     protected Rigidbody2D rb; 
     protected float scale = 1f; //amount player scales by
+    protected float speedDecay = .3f; //amount speed is reduced by when player grows a certain amount
 
     // Use this for initialization
     public virtual void Start () {
@@ -60,7 +61,6 @@ public class Creature : MonoBehaviour {
         else if(collision.gameObject.tag == "Vegetation")
         {
             HandleEating();
-            Debug.Log("Eating veg");
             Vector3 growthRate = new Vector3(collision.gameObject.transform.localScale.x * .05f, collision.gameObject.transform.localScale.y * .05f);
             transform.localScale += growthRate;
         }
