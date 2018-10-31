@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour {
     //determine max 'speed' of movement
     float maxSpeed = .10f;
     float minSpeed = .0000001f;
-    float colliderScale = .1f;
     Animator animator;
 
     void Start()

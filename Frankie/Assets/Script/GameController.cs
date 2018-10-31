@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
     int count = 0;
     int count2 = 0;
-    public GameObject enemy;
+    public GameObject legling;
     public GameObject vegetation;
     public int spawnTimer; 
     public int maxEnemies; 
@@ -26,7 +26,7 @@ public class GameController : MonoBehaviour {
 
         if (count > spawnTimer && enemiesOnScreen < maxEnemies)
         {
-            createEnemy();
+            createBot();
             count = 0;
         }
         count2++;
@@ -38,9 +38,9 @@ public class GameController : MonoBehaviour {
     }
         
 
-    void createEnemy()
+    void createBot()
     {
-        Instantiate(enemy);
+        Instantiate(legling);
     } 
 
     void createVeg()

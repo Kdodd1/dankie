@@ -5,9 +5,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Creature : MonoBehaviour {
-    public float baseSpeed; //base values (before power-ups)
-    protected float baseSize;
+    //base values (before mods)
+    public float baseSpeed;
+    protected float baseSize;   
+
     public bool isEdible; //can creature be eaten
+    public float maxSpeed, minSpeed; //max and min speed a creature can go
     protected float xDir, yDir; //movement direction
     protected float xMove, yMove; //movement velocity
     public bool isMoving; //is creature moving
@@ -16,7 +19,7 @@ public class Creature : MonoBehaviour {
     protected bool xChanged = true; //specifies if xDir changed
     protected bool yChanged = true; //specified if yDir has chagned
     protected Rigidbody2D rb; 
-    protected float scale = 1f; //amount player scales by
+    protected float scale = .1f; //amount creature scales by
     protected float speedDecay = .3f; //amount speed is reduced by when player grows a certain amount
 
     // Use this for initialization
@@ -31,7 +34,7 @@ public class Creature : MonoBehaviour {
         HandleMove();
 	}
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Creature")
         {

@@ -113,7 +113,7 @@ public class Player : Creature
                 yChanged = true;
             }
 
-            //if down arrow is pressed, start moving up
+            //if down arrow is pressed, start moving down
             if (Input.GetKey(KeyCode.DownArrow))
             {
                 yDir = -1f;
@@ -133,6 +133,7 @@ public class Player : Creature
         
     }
 
+    //determines how sprite will be animated
     public override void HandleAnimation() {
         if (!isMovingX && !isMovingY) {
             animator.speed = 0f;
