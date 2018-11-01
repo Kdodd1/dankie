@@ -5,7 +5,7 @@ using UnityEngine;
 public class Parasite : MonoBehaviour {
 
 	// Use this for initialization
-	void Start () {
+	public virtual void Start () {
 		
 	}
 	

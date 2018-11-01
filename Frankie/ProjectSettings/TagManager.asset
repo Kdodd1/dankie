@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Vegetation
   - Wall
+  - Creature
   layers:
   - Default
   - TransparentFX

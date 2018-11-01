@@ -21,6 +21,8 @@ public class Creature : MonoBehaviour {
     protected Rigidbody2D rb; 
     protected float scale = .1f; //amount creature scales by
     protected float speedDecay = .3f; //amount speed is reduced by when player grows a certain amount
+    public bool hasParasite; //creature has a parasite attached
+    public GameObject parasitePrefab; //parasite prefab
 
     // Use this for initialization
     public virtual void Start () {
@@ -96,5 +98,11 @@ public class Creature : MonoBehaviour {
     {
         xMove = transform.position.x + (xDir * baseSpeed) * Time.deltaTime;
         yMove = transform.position.y + (yDir * baseSpeed) * Time.deltaTime;
+    }
+
+    public void gainParasite() {
+        GameObject parasite = Instantiate(parasitePrefab) as GameObject;
+        parasite.transform.parent = gameObject.transform;
+        parasite.transform.position = new Vector3(0f, gameObject.transform.localScale.y * .16f, -1f);
     }
 }

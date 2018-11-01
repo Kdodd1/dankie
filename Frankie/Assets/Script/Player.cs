@@ -22,6 +22,7 @@ public class Player : Creature
         baseSpeed = 5;
         edgeDist = GameController.edgeDist;
         size = transform.localScale.x;
+        gainParasite();
 
     }
 
