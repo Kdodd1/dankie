@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour {
 	}
 	
 	void Update () {
+	//Make everything in Update method a function
         count++;
 
         if (count > spawnTimer && enemiesOnScreen < maxEnemies)
