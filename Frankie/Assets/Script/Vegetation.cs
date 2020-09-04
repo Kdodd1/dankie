@@ -8,28 +8,28 @@ public class Vegetation : MonoBehaviour {
     float edgeDis = 30f;
     float count = 0f;
     float swayAngle;
-    float minSway = 10f;
-    float maxSway = 70f;
+    float minSway = 80f;
+    float maxSway = 400f;
     int swayCount = 0;
     float sign = 1f;
-    float rotator = .3f;
-    float growthRate = .05f; //how quickly it grows
-    
+    float rotator = .05f;
+    float growthRate = .01f; //how quickly it grows
+
 
 	// Use this for initialization
 	void Start () {
- 
+
         randomPosition();
         randomSway();
         transform.localPosition = new Vector3(xPos, yPos);
         transform.localScale = new Vector3(.01f, .01f);
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
         count++;
-        
+
         if (count >= 15){
             grow();
             count = 0f;
@@ -47,7 +47,7 @@ public class Vegetation : MonoBehaviour {
     {
         xPos = Random.Range(-edgeDis, edgeDis);
         yPos = Random.Range(-edgeDis, edgeDis);
-    
+
     }
 
     //Randomizes angle the sway will stop at
