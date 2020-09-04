@@ -7,8 +7,8 @@ public class GameController : MonoBehaviour {
     int count2 = 0;
     public GameObject legling;
     public GameObject vegetation;
-    public int spawnTimer; 
-    public int maxEnemies; 
+    public int spawnTimer;
+    public int maxEnemies;
     public static int enemiesOnScreen;
     public int vegTimer;
     public int maxVeg;
@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour {
         enemiesOnScreen = 0;
         vegOnScreen = 0;
 	}
-	
+
 	void Update () {
 	//Make everything in Update method a function
         count++;
@@ -37,16 +37,18 @@ public class GameController : MonoBehaviour {
             count2 = 0;
         }
     }
-        
+
 
     void createBot()
     {
         Instantiate(legling);
-    } 
+        enemiesOnScreen++;
+    }
 
     void createVeg()
     {
         Instantiate(vegetation);
+        vegOnScreen++;
     }
 
     public float GetEdgeDist()
@@ -56,6 +58,3 @@ public class GameController : MonoBehaviour {
     }
 
 }
-
-
-    
