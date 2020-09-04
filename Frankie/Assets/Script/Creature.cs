@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Creature : MonoBehaviour {
     //base values (before mods)
     public float baseSpeed;
-    protected float baseSize;   
+    protected float baseSize;
 
     public bool isEdible; //can creature be eaten
     public float maxSpeed, minSpeed; //max and min speed a creature can go
@@ -18,8 +18,8 @@ public class Creature : MonoBehaviour {
     protected float animationSpeed = 0.8f; //speed of animation (fps)
     protected bool xChanged = true; //specifies if xDir changed
     protected bool yChanged = true; //specified if yDir has chagned
-    protected Rigidbody2D rb; 
-    protected float scale = .1f; //amount creature scales by
+    protected Rigidbody2D rb;
+    protected float scale = .01f; //amount creature scales by
     protected float speedDecay = .3f; //amount speed is reduced by when player grows a certain amount
     public bool hasParasite; //creature has a parasite attached
     public GameObject parasitePrefab; //parasite prefab
@@ -29,7 +29,7 @@ public class Creature : MonoBehaviour {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
 	}
-	
+
 	// Update is called once per frame
 	public virtual void Update () {
         UpdateProperties();
@@ -46,10 +46,10 @@ public class Creature : MonoBehaviour {
             }
             else
             {
-               HandleDying(); 
+               HandleDying();
             }
-      
-        }   
+
+        }
         //Delete this next else if when Enemy is converted over to Creature subclass.
         else if (collision.gameObject.tag == "Enemy")
         {
@@ -59,9 +59,9 @@ public class Creature : MonoBehaviour {
             }
             else
             {
-               HandleDying(); 
+               HandleDying();
             }
-      
+
         }
         else if(collision.gameObject.tag == "Vegetation")
         {
@@ -92,7 +92,7 @@ public class Creature : MonoBehaviour {
     {
 
     }
-    
+
     //update properties before animating frame
     public virtual void UpdateProperties()
     {
