@@ -14,7 +14,7 @@ public class Player : Creature
 
     // Use this for initialization
     public override void Start()
-    {   
+    {
         base.Start(); //call Start() from Creature
         //initialize starting values
         isMovingX = false;
@@ -63,123 +63,76 @@ public class Player : Creature
     // Handles player input
     void HandleInput()
     {
-        //check for stopped movement along x axis
-        if (Input.GetKeyUp(KeyCode.RightArrow) || Input.GetKeyUp(KeyCode.LeftArrow))
-        {
-            xDir = 0f;
-            isMovingX = false;
-            xChanged = true;
-        }
-
-        //check for stopped movement along y axis
-        if (Input.GetKeyUp(KeyCode.UpArrow) || Input.GetKeyUp(KeyCode.DownArrow))
-        {
-            yDir = 0f;
-            isMovingY = false;
-            yChanged = true;
-        }
-
-        //check for movement along x axis, only if not already moving along x axis
-        if (!isMovingX)
-        {
             //If right arrow is pressed, start moving right
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 xDir = 1f;
-                //set so we can only move along x axis in one direction at a time
+                //set so we can only move along x in one direction at a time
                 isMovingX = true;
-                xChanged = true;
             }
 
             //if left arrow is pressed, start moving left
             else if (Input.GetKey(KeyCode.LeftArrow))
             {
                 xDir = -1f;
-                //set so we can only move along x axis in one direction at a time
+                //set so we can only move along x in one direction at a time
                 isMovingX = true;
-                xChanged = true;
             }
-        }
 
-        //check for movement along y axis, only if not already moving along y axis
-        if (!isMovingY)
-        {
+            //if left or right arrow not pressed, stop moving on x
+            else {
+                xDir = 0f;
+                isMovingX = false;
+            }
+
             //If up arrow is pressed, start moving up
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 yDir = 1f;
 
-                //set so we can only move along y axis in one direction at a time
+                //set so we can only move along y in one direction at a time
                 isMovingY = true;
-                yChanged = true;
             }
 
             //if down arrow is pressed, start moving down
-            if (Input.GetKey(KeyCode.DownArrow))
+            else if (Input.GetKey(KeyCode.DownArrow))
             {
                 yDir = -1f;
 
-                //set so we can only move along y axis in one direction at a time
+                //set so we can only move along y in one direction at a time
                 isMovingY = true;
-                yChanged = true;
             }
-        }
-        if (xChanged || yChanged) {
-            HandleAnimation();
-        }
 
-        //reset checks for next frame;
-        xChanged = false;
-        yChanged = false;
-        
+            //if up or down arrow not pressed, stop moving on y
+            else {
+                yDir = 0f;
+                isMovingY = false;
+            }
+
+        HandleAnimation();
     }
 
     //determines how sprite will be animated
     public override void HandleAnimation() {
-        if (!isMovingX && !isMovingY) {
-            animator.speed = 0f;
+      //stops animation if not moving
+      if (!isMovingX && !isMovingY) {
+        animator.speed = 0f;
+      }
+      //sets animation in correct direction if moving
+      else {
+        animator.speed = animationSpeed;
+        if (xDir > 0) {
+          animator.SetInteger("Direction", 1);
+        } else if (xDir < 0) {
+          animator.SetInteger("Direction", 3);
         }
-        else {
-            animator.speed = animationSpeed;
-            if (xChanged) {
-                if (xDir > 0) {
-                    animator.SetInteger("Direction", 1);
-                }
-                else if (xDir < 0) {
-                    animator.SetInteger("Direction", 3);
-                }
-                else {
-                    FallThrough();
-                }
-            }
-            if (yChanged) {
-                if (yDir > 0) {
-                    animator.SetInteger("Direction", 0);
-                }
-                else if (yDir < 0) {
-                    animator.SetInteger("Direction", 2);
-                }
-                else {
-                    FallThrough();
-                }
-            }
-        }
-    }
 
-    //adjusts animation if not caught by direction change 
-    void FallThrough() {
         if (yDir > 0) {
-            animator.SetInteger("Direction", 0);
+          animator.SetInteger("Direction", 0);
+        } else if (yDir < 0) {
+          animator.SetInteger("Direction", 2);
         }
-        else if (yDir < 0) {
-            animator.SetInteger("Direction", 2);
-        }
-        else if (xDir > 0) {
-            animator.SetInteger("Direction", 1);
-        }
-        else {
-            animator.SetInteger("Direction", 3);
-        }
+      }
     }
 
     //finalizes values for next frame update
