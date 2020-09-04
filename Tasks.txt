@@ -1,17 +1,30 @@
 To Do:
--Create menus
--Fix enemy collision box scaling issue (it scales faster than the sprite)
--Enemy destruction (after leaving camera)
--SPRITES!
--Movement animation
--Collision detection on enemies (so they can eat each other)
--Add sounds
--LATER-Environmental hazards (tornadoes, dust storms, etc.)
--LATER-Make map larger than camera view
--LATER-Have player always at center of screen
--MUCH LATER-Multiplayer
+-Clamp camera to L/R of map (so we can't see where map ends, top/btm already done)
+-Change character scaling to depend on what's eaten (currently scales a static
+amount no matter what you eat. Maybe have what's eaten pass info on about it's
+size?)
+-Add parasite parent class (affects host over time)
+-Add bad health parasite sub class (shrinks host) 
+-Add bad speed parasite sub class (slows host)
+-Add bad appetite parasite sub class (allows you to be eaten by things 20%
+smaller than you) 
+-Add good health parasite sub class (shrinks host) 
+-Add good speed parasite sub class (slows host)
+-Add good appetite parasite sub class (allows you to eat things 20%
+bigger than you) 
+-Create menus (partially done)
+-More SPRITES!
+-Environmental hazards (tornadoes, dust storms, etc.)
+-Multiplayer
 
 Done:
+-Add sounds (for player)
+-Enemy return to game space (after leaving camera)
+-Fix enemy collision box scaling issue (it scales faster than the sprite)
+-Make map larger than camera view
+-Have player always at center of screen
+-Movement animation
+-Collision detection on enemies (so they can eat each other)
 -Enemy spawns outside of screenview and moves across screen
 -Main character movement
 -Create GameController class to control events
